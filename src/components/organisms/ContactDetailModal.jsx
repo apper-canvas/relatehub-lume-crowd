@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect } from "react";
 import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
+import Modal from "@/components/organisms/Modal";
 
 const ContactDetailModal = ({ isOpen, onClose, contact, companies, onEdit, onDelete }) => {
   useEffect(() => {
@@ -14,12 +15,13 @@ const ContactDetailModal = ({ isOpen, onClose, contact, companies, onEdit, onDel
     return () => {
       document.body.style.overflow = "unset";
     };
-  }, [isOpen]);
+}, [isOpen]);
 
-  if (!contact) return null;
-
-  const company = companies?.find(c => c.Id === contact?.companyId);
-  const companyName = company?.name || (contact?.companyId ? 'Unknown Company' : 'No Company');
+  if (!contact) {
+    return null;
+  }
+  
+  const company = companies?.find(c => c.Id === contact.companyId);
 
   const handleEdit = () => {
     onEdit(contact);

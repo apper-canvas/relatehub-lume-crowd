@@ -97,16 +97,16 @@ const sortedContacts = [...contacts].sort((a, b) => {
             <th className="px-6 py-3 text-right text-xs font-semibold text-gray-700 uppercase tracking-wider">
               Actions
             </th>
-          </tr>
+</tr>
         </thead>
-<tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-white divide-y divide-gray-200">
           {sortedContacts.map((contact) => (
-<tr
+            <tr
               key={contact.Id}
-              onClick={() => onViewDetails?.(contact)}
+              onClick={() => onViewDetails(contact)}
               className="group hover:bg-gray-50 cursor-pointer transition-colors"
             >
-              <td className="px-6 py-4">
+              <td className="px-6 py-4 whitespace-nowrap">
                 <div className="flex items-center gap-3">
                   <div className="flex-shrink-0 h-10 w-10 rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
                     <span className="text-sm font-medium text-primary">

@@ -24,11 +24,9 @@ const [error, setError] = useState("");
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
   const [selectedContact, setSelectedContact] = useState(null);
   const [detailContact, setDetailContact] = useState(null);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
-
   useEffect(() => {
     loadData();
   }, []);
@@ -115,8 +113,6 @@ const handleDeleteContact = async () => {
       toast.error("Failed to delete contact");
     }
   };
-
-  // Handler functions
   const openDetailModal = (contact) => {
     setDetailContact(contact);
     setIsDetailModalOpen(true);
@@ -223,7 +219,6 @@ const handleDeleteContact = async () => {
         message={`Are you sure you want to delete ${selectedContact?.Name}? This action cannot be undone.`}
         confirmLabel="Delete"
       />
-
       <ContactDetailModal
         isOpen={isDetailModalOpen}
         onClose={() => setIsDetailModalOpen(false)}
