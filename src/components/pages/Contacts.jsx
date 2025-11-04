@@ -21,11 +21,13 @@ const Contacts = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-const [selectedContact, setSelectedContact] = useState(null);
+  const [selectedContact, setSelectedContact] = useState(null);
   const [detailContact, setDetailContact] = useState(null);
-  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
+const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
+
+  // Fetch contacts on mount
   useEffect(() => {
     loadData();
   }, []);
@@ -111,23 +113,26 @@ return (
     } catch (err) {
       toast.error("Failed to delete contact");
     }
-  };
+};
 
-const openDetailModal = (contact) => {
+  const openDetailModal = (contact) => {
     setDetailContact(contact);
     setIsDetailModalOpen(true);
   };
-const openEditModal = (contact) => {
+
+  const openEditModal = (contact) => {
     setIsDetailModalOpen(false);
     setSelectedContact(contact);
     setIsEditModalOpen(true);
   };
-const openDeleteDialog = (contact) => {
+
+  const openDeleteDialog = (contact) => {
     setIsDetailModalOpen(false);
     setSelectedContact(contact);
     setIsDeleteDialogOpen(true);
-  };
+};
 
+  // Handle loading and error states
   if (loading) return <Loading />;
   if (error) return <Error message={error} onRetry={loadData} />;
 
@@ -158,17 +163,23 @@ const openDeleteDialog = (contact) => {
             actionLabel="Add Contact"
             onAction={() => setIsAddModalOpen(true)}
           />
-        ) : (
-<div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-            <ContactsTable
-              contacts={filteredContacts}
-              companies={companies}
-              onEdit={openEditModal}
-              onDelete={openDeleteDialog}
-              onViewDetails={openDetailModal}
-            />
-          </div>
-        )}
+) : (
+            <>
+              <ContactsTable
+                contacts={filteredContacts}
+                companies={companies}
+                onEdit={(contact) => {
+                  setSelectedContact(contact);
+                  setIsEditModalOpen(true);
+                }}
+                onDelete={(contact) => {
+                  setSelectedContact(contact);
+                  setIsDeleteDialogOpen(true);
+                }}
+                onViewDetails={openDetailModal}
+              />
+            </>
+          )}
       </div>
 
       <Modal
@@ -213,7 +224,7 @@ const openDeleteDialog = (contact) => {
         message={`Are you sure you want to delete ${selectedContact?.Name}? This action cannot be undone.`}
         confirmLabel="Delete"
         variant="danger"
-      />
+/>
 
       <ContactDetailModal
         isOpen={isDetailModalOpen}

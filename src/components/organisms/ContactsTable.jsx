@@ -99,14 +99,14 @@ const sortedContacts = [...contacts].sort((a, b) => {
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
-{sortedContacts.map((contact) => (
+<tbody className="bg-white divide-y divide-gray-200">
+          {sortedContacts.map((contact) => (
             <tr
               key={contact.Id}
               onClick={() => onViewDetails(contact)}
-              className="hover:bg-gray-50 transition-colors duration-150 group cursor-pointer"
+              className="group hover:bg-gray-50 cursor-pointer transition-colors"
             >
-<td className="px-6 py-4 whitespace-nowrap">
+              <td className="px-6 py-4 whitespace-nowrap">
                 <div className="flex items-center">
                   <div className="flex-shrink-0 h-10 w-10 rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
                     <span className="text-sm font-medium text-primary">
@@ -118,7 +118,7 @@ const sortedContacts = [...contacts].sort((a, b) => {
                   </div>
                 </div>
               </td>
-<td className="px-6 py-4 whitespace-nowrap">
+              <td className="px-6 py-4 whitespace-nowrap">
                 <div className="text-sm text-gray-600">{contact.Email}</div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
@@ -128,7 +128,7 @@ const sortedContacts = [...contacts].sort((a, b) => {
                 <div className="text-sm text-gray-600">{getCompanyName(contact.CompanyId)}</div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-right">
-<div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+                <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
@@ -144,7 +144,7 @@ const sortedContacts = [...contacts].sort((a, b) => {
                       e.stopPropagation();
                       onDelete(contact);
                     }}
-className="p-2 rounded-lg hover:bg-red-50 transition-colors"
+                    className="p-2 rounded-lg hover:bg-red-50 transition-colors"
                     title="Delete contact"
                   >
                     <ApperIcon name="Trash2" size={16} className="text-gray-400 hover:text-red-500 transition-colors" />
