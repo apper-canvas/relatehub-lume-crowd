@@ -72,19 +72,19 @@ const handleDelete = () => {
                     </div>
                     <div>
 <p className="text-sm font-medium text-gray-500 mb-1">Company</p>
-<p className="text-base text-gray-900">{company?.name || 'N/A'}</p>
+                      <p className="text-base text-gray-900">{company?.name || 'N/A'}</p>
                     </div>
 <div>
-                      <p className="text-sm font-medium text-gray-500 mb-1">Email</p>
-<p className="text-base text-gray-900">{contact.email || 'Not provided'}</p>
+<p className="text-sm font-medium text-gray-500 mb-1">Email</p>
+                      <p className="text-base text-gray-900">{contact.email || 'Not provided'}</p>
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-gray-500 mb-1">Phone</p>
-<p className="text-base text-gray-900">{contact.phone || 'Not provided'}</p>
+<p className="text-sm font-medium text-gray-500 mb-1">Phone</p>
+                      <p className="text-base text-gray-900">{contact.phone || 'Not provided'}</p>
                     </div>
 <div className="md:col-span-2">
-                      <p className="text-sm font-medium text-gray-500 mb-1">Job Title</p>
-<p className="text-base text-gray-900">{contact.jobTitle || 'Not specified'}</p>
+<p className="text-sm font-medium text-gray-500 mb-1">Job Title</p>
+                      <p className="text-base text-gray-900">{contact.jobTitle || 'Not specified'}</p>
                     </div>
                   </div>
                 </div>
