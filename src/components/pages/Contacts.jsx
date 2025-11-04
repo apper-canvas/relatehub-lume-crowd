@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import { toast } from "react-toastify";
+import ContactDetailModal from "@/components/organisms/ContactDetailModal";
 import Header from "@/components/organisms/Header";
 import ContactsTable from "@/components/organisms/ContactsTable";
 import Modal from "@/components/organisms/Modal";
@@ -22,8 +23,9 @@ const Contacts = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-  const [selectedContact, setSelectedContact] = useState(null);
-
+const [selectedContact, setSelectedContact] = useState(null);
+  const [detailContact, setDetailContact] = useState(null);
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   useEffect(() => {
     loadData();
   }, []);
@@ -112,6 +114,11 @@ const Contacts = () => {
     }
   };
 
+const openDetailModal = (contact) => {
+    setDetailContact(contact);
+    setIsDetailModalOpen(true);
+  };
+
   const openEditModal = (contact) => {
     setSelectedContact(contact);
     setIsEditModalOpen(true);
@@ -156,9 +163,10 @@ const Contacts = () => {
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             <ContactsTable
               contacts={filteredContacts}
-              companies={companies}
+companies={companies}
               onEdit={openEditModal}
               onDelete={openDeleteDialog}
+              onViewDetails={openDetailModal}
             />
           </div>
         )}
@@ -206,6 +214,15 @@ const Contacts = () => {
         message={`Are you sure you want to delete ${selectedContact?.name}? This action cannot be undone.`}
         confirmLabel="Delete"
         variant="danger"
+/>
+
+      <ContactDetailModal
+        isOpen={isDetailModalOpen}
+        onClose={() => setIsDetailModalOpen(false)}
+        contact={detailContact}
+        companies={companies}
+        onEdit={openEditModal}
+        onDelete={openDeleteDialog}
       />
     </div>
   );

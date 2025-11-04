@@ -3,7 +3,7 @@ import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
 import { cn } from "@/utils/cn";
 
-const ContactsTable = ({ contacts, companies, onEdit, onDelete }) => {
+const ContactsTable = ({ contacts, companies, onEdit, onDelete, onViewDetails }) => {
   const [sortField, setSortField] = useState("name");
   const [sortDirection, setSortDirection] = useState("asc");
 
@@ -101,9 +101,10 @@ const ContactsTable = ({ contacts, companies, onEdit, onDelete }) => {
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
           {sortedContacts.map((contact) => (
-            <tr
+<tr
               key={contact.Id}
-              className="hover:bg-gray-50 transition-colors duration-150 group"
+              onClick={() => onViewDetails(contact)}
+              className="hover:bg-gray-50 transition-colors duration-150 group cursor-pointer"
             >
               <td className="px-6 py-4 whitespace-nowrap">
                 <div className="flex items-center">
