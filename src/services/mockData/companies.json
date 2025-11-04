@@ -1,0 +1,50 @@
+[
+  {
+    "Id": 1,
+    "name": "TechCorp Solutions",
+    "industry": "Technology",
+    "description": "Enterprise software development company specializing in cloud-based solutions for mid-market businesses.",
+    "createdAt": "2024-01-10T08:00:00Z",
+    "updatedAt": "2024-01-10T08:00:00Z"
+  },
+  {
+    "Id": 2,
+    "name": "Innovate Design Studio",
+    "industry": "Design",
+    "description": "Award-winning design agency focused on brand identity and digital experiences for startups.",
+    "createdAt": "2024-01-11T09:30:00Z",
+    "updatedAt": "2024-01-11T09:30:00Z"
+  },
+  {
+    "Id": 3,
+    "name": "GreenLeaf Consulting",
+    "industry": "Consulting",
+    "description": "Sustainability consulting firm helping businesses implement environmentally responsible practices.",
+    "createdAt": "2024-01-12T11:00:00Z",
+    "updatedAt": "2024-01-12T11:00:00Z"
+  },
+  {
+    "Id": 4,
+    "name": "FinancePlus Group",
+    "industry": "Finance",
+    "description": "Financial services company providing accounting and advisory services to small and medium businesses.",
+    "createdAt": "2024-01-13T13:15:00Z",
+    "updatedAt": "2024-01-13T13:15:00Z"
+  },
+  {
+    "Id": 5,
+    "name": "HealthWellness Initiative",
+    "industry": "Healthcare",
+    "description": "Non-profit organization promoting workplace wellness programs and preventive health education.",
+    "createdAt": "2024-01-14T15:30:00Z",
+    "updatedAt": "2024-01-14T15:30:00Z"
+  },
+  {
+    "Id": 6,
+    "name": "Retail Solutions Inc",
+    "industry": "Retail",
+    "description": "Retail technology provider offering point-of-sale systems and inventory management software.",
+    "createdAt": "2024-01-15T10:00:00Z",
+    "updatedAt": "2024-01-15T10:00:00Z"
+  }
+]
