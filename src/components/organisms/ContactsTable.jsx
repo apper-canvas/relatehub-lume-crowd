@@ -103,7 +103,7 @@ const sortedContacts = [...contacts].sort((a, b) => {
           {sortedContacts.map((contact) => (
             <tr
               key={contact.Id}
-              onClick={() => onViewDetails(contact)}
+onClick={() => onViewDetails(contact)}
               className="group hover:bg-gray-50 cursor-pointer transition-colors"
             >
               <td className="px-6 py-4 whitespace-nowrap">

@@ -24,8 +24,8 @@ const Contacts = () => {
 const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const [selectedContact, setSelectedContact] = useState(null);
-  const [detailContact, setDetailContact] = useState(null);
-const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
+const [detailContact, setDetailContact] = useState(null);
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
 
   // Fetch contacts on mount
   useEffect(() => {
@@ -115,22 +115,22 @@ return (
     }
 };
 
-  const openDetailModal = (contact) => {
+const openDetailModal = (contact) => {
     setDetailContact(contact);
     setIsDetailModalOpen(true);
   };
 
-  const openEditModal = (contact) => {
+const openEditModal = (contact) => {
     setIsDetailModalOpen(false);
     setSelectedContact(contact);
     setIsEditModalOpen(true);
   };
 
-  const openDeleteDialog = (contact) => {
+const openDeleteDialog = (contact) => {
     setIsDetailModalOpen(false);
     setSelectedContact(contact);
     setIsDeleteDialogOpen(true);
-};
+  };
 
   // Handle loading and error states
   if (loading) return <Loading />;
@@ -165,7 +165,7 @@ return (
           />
 ) : (
             <>
-              <ContactsTable
+<ContactsTable
                 contacts={filteredContacts}
                 companies={companies}
                 onEdit={(contact) => {
@@ -226,7 +226,7 @@ return (
         variant="danger"
 />
 
-      <ContactDetailModal
+<ContactDetailModal
         isOpen={isDetailModalOpen}
         onClose={() => setIsDetailModalOpen(false)}
         contact={detailContact}
