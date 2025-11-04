@@ -1,17 +1,17 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import { toast } from "react-toastify";
-import ContactDetailModal from "@/components/organisms/ContactDetailModal";
-import Header from "@/components/organisms/Header";
-import ContactsTable from "@/components/organisms/ContactsTable";
-import Modal from "@/components/organisms/Modal";
-import ConfirmDialog from "@/components/organisms/ConfirmDialog";
-import ContactForm from "@/components/organisms/ContactForm";
-import Loading from "@/components/ui/Loading";
-import Error from "@/components/ui/Error";
-import Empty from "@/components/ui/Empty";
 import { contactService } from "@/services/api/contactService";
 import { companyService } from "@/services/api/companyService";
+import ConfirmDialog from "@/components/organisms/ConfirmDialog";
+import ContactDetailModal from "@/components/organisms/ContactDetailModal";
+import ContactForm from "@/components/organisms/ContactForm";
+import ContactsTable from "@/components/organisms/ContactsTable";
+import Header from "@/components/organisms/Header";
+import Modal from "@/components/organisms/Modal";
+import Empty from "@/components/ui/Empty";
+import Error from "@/components/ui/Error";
+import Loading from "@/components/ui/Loading";
 
 const Contacts = () => {
   const { onMenuToggle } = useOutletContext();
@@ -55,15 +55,14 @@ const [selectedContact, setSelectedContact] = useState(null);
       return;
     }
 
-    const lowerQuery = query.toLowerCase();
+const lowerQuery = query.toLowerCase();
     const filtered = contacts.filter((contact) => {
-      const company = companies.find((c) => c.Id === contact.companyId);
-      const companyName = company ? company.name.toLowerCase() : "";
-      
-      return (
-        contact.name.toLowerCase().includes(lowerQuery) ||
-        contact.email.toLowerCase().includes(lowerQuery) ||
-        contact.phone.toLowerCase().includes(lowerQuery) ||
+      const company = companies.find((c) => c.Id === contact.CompanyId);
+      const companyName = company ? company.Name.toLowerCase() : "";
+return (
+        contact.Name.toLowerCase().includes(lowerQuery) ||
+        contact.Email.toLowerCase().includes(lowerQuery) ||
+        contact.Phone.toLowerCase().includes(lowerQuery) ||
         companyName.includes(lowerQuery)
       );
     });
@@ -118,13 +117,13 @@ const openDetailModal = (contact) => {
     setDetailContact(contact);
     setIsDetailModalOpen(true);
   };
-
-  const openEditModal = (contact) => {
+const openEditModal = (contact) => {
+    setIsDetailModalOpen(false);
     setSelectedContact(contact);
     setIsEditModalOpen(true);
   };
-
-  const openDeleteDialog = (contact) => {
+const openDeleteDialog = (contact) => {
+    setIsDetailModalOpen(false);
     setSelectedContact(contact);
     setIsDeleteDialogOpen(true);
   };
@@ -160,10 +159,10 @@ const openDetailModal = (contact) => {
             onAction={() => setIsAddModalOpen(true)}
           />
         ) : (
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+<div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             <ContactsTable
               contacts={filteredContacts}
-companies={companies}
+              companies={companies}
               onEdit={openEditModal}
               onDelete={openDeleteDialog}
               onViewDetails={openDetailModal}
@@ -203,7 +202,7 @@ companies={companies}
         />
       </Modal>
 
-      <ConfirmDialog
+<ConfirmDialog
         isOpen={isDeleteDialogOpen}
         onClose={() => {
           setIsDeleteDialogOpen(false);
@@ -211,10 +210,10 @@ companies={companies}
         }}
         onConfirm={handleDeleteContact}
         title="Delete Contact"
-        message={`Are you sure you want to delete ${selectedContact?.name}? This action cannot be undone.`}
+        message={`Are you sure you want to delete ${selectedContact?.Name}? This action cannot be undone.`}
         confirmLabel="Delete"
         variant="danger"
-/>
+      />
 
       <ContactDetailModal
         isOpen={isDetailModalOpen}

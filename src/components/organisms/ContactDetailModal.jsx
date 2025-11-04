@@ -16,17 +16,15 @@ const ContactDetailModal = ({ isOpen, onClose, contact, companies, onEdit, onDel
     };
   }, [isOpen]);
 
-  if (!contact) return null;
+if (!contact) return null;
 
-  const company = companies.find(c => c.Id === contact.CompanyId);
-
+  const company = companies.find(c => c.Id === contact.companyId);
   const handleEdit = () => {
     onEdit(contact);
     onClose();
   };
-
-  const handleDelete = () => {
-    onDelete(contact.Id);
+const handleDelete = () => {
+    onDelete(contact);
     onClose();
   };
 
@@ -68,25 +66,25 @@ const ContactDetailModal = ({ isOpen, onClose, contact, companies, onEdit, onDel
                     Contact Information
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-50 p-4 rounded-lg">
-                    <div>
+<div>
                       <p className="text-sm font-medium text-gray-500 mb-1">Full Name</p>
-                      <p className="text-base text-gray-900 font-medium">{contact.Name}</p>
+                      <p className="text-base text-gray-900 font-medium">{contact.name}</p>
                     </div>
                     <div>
                       <p className="text-sm font-medium text-gray-500 mb-1">Company</p>
-                      <p className="text-base text-gray-900">{company?.Name || 'N/A'}</p>
+                      <p className="text-base text-gray-900">{company?.name || 'N/A'}</p>
                     </div>
-                    <div>
+<div>
                       <p className="text-sm font-medium text-gray-500 mb-1">Email</p>
-                      <p className="text-base text-gray-900">{contact.Email || 'Not provided'}</p>
+                      <p className="text-base text-gray-900">{contact.email || 'Not provided'}</p>
                     </div>
                     <div>
                       <p className="text-sm font-medium text-gray-500 mb-1">Phone</p>
-                      <p className="text-base text-gray-900">{contact.Phone || 'Not provided'}</p>
+                      <p className="text-base text-gray-900">{contact.phone || 'Not provided'}</p>
                     </div>
-                    <div className="md:col-span-2">
+<div className="md:col-span-2">
                       <p className="text-sm font-medium text-gray-500 mb-1">Job Title</p>
-                      <p className="text-base text-gray-900">{contact.JobTitle || 'Not specified'}</p>
+                      <p className="text-base text-gray-900">{contact.jobTitle || 'Not specified'}</p>
                     </div>
                   </div>
                 </div>
@@ -97,9 +95,9 @@ const ContactDetailModal = ({ isOpen, onClose, contact, companies, onEdit, onDel
                     <ApperIcon name="FileText" size={20} className="mr-2 text-primary" />
                     Notes
                   </h3>
-                  <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg">
-                    {contact.Notes ? (
-                      <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">{contact.Notes}</p>
+<div className="bg-amber-50 border border-amber-200 p-4 rounded-lg">
+                    {contact.notes ? (
+                      <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">{contact.notes}</p>
                     ) : (
                       <p className="text-gray-400 italic">No notes available for this contact</p>
                     )}
