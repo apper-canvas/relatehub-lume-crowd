@@ -103,11 +103,11 @@ const sortedContacts = [...contacts].sort((a, b) => {
           {sortedContacts.map((contact) => (
             <tr
               key={contact.Id}
-onClick={() => onViewDetails(contact)}
-                className="group hover:bg-gray-50 cursor-pointer transition-colors"
+              onClick={() => onViewDetails(contact)}
+              className="group hover:bg-gray-50 cursor-pointer transition-colors"
             >
               <td className="px-6 py-4 whitespace-nowrap">
-                <div className="flex items-center">
+                <div className="flex items-center gap-3">
                   <div className="flex-shrink-0 h-10 w-10 rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
                     <span className="text-sm font-medium text-primary">
                       {contact.Name.charAt(0).toUpperCase()}

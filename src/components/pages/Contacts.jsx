@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
 import { contactService } from "@/services/api/contactService";
 import { companyService } from "@/services/api/companyService";
 import ConfirmDialog from "@/components/organisms/ConfirmDialog";
@@ -19,14 +20,15 @@ const Contacts = () => {
   const [companies, setCompanies] = useState([]);
   const [filteredContacts, setFilteredContacts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+const [error, setError] = useState("");
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-const [selectedContact, setSelectedContact] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedContact, setSelectedContact] = useState(null);
   const [detailContact, setDetailContact] = useState(null);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
-  // Fetch contacts on mount
+
   useEffect(() => {
     loadData();
   }, []);
@@ -60,7 +62,7 @@ const lowerQuery = query.toLowerCase();
     const filtered = contacts.filter((contact) => {
       const company = companies.find((c) => c.Id === contact.CompanyId);
       const companyName = company ? company.Name.toLowerCase() : "";
-return (
+      return (
         contact.Name.toLowerCase().includes(lowerQuery) ||
         contact.Email.toLowerCase().includes(lowerQuery) ||
         contact.Phone.toLowerCase().includes(lowerQuery) ||
@@ -101,7 +103,7 @@ return (
     }
   };
 
-  const handleDeleteContact = async () => {
+const handleDeleteContact = async () => {
     try {
       await contactService.delete(selectedContact.Id);
       setContacts((prev) => prev.filter((c) => c.Id !== selectedContact.Id));
@@ -112,9 +114,10 @@ return (
     } catch (err) {
       toast.error("Failed to delete contact");
     }
-};
+  };
 
-const openDetailModal = (contact) => {
+  // Handler functions
+  const openDetailModal = (contact) => {
     setDetailContact(contact);
     setIsDetailModalOpen(true);
   };
@@ -131,7 +134,6 @@ const openDetailModal = (contact) => {
     setIsDeleteDialogOpen(true);
   };
 
-  // Handle loading and error states
   if (loading) return <Loading />;
   if (error) return <Error message={error} onRetry={loadData} />;
 
@@ -145,7 +147,7 @@ const openDetailModal = (contact) => {
         onMenuToggle={onMenuToggle}
       />
 
-      <div className="flex-1 p-4 sm:p-6 lg:p-8">
+<div className="flex-1 p-4 sm:p-6 lg:p-8">
         {filteredContacts.length === 0 && contacts.length === 0 ? (
           <Empty
             icon="Users"
@@ -162,23 +164,21 @@ const openDetailModal = (contact) => {
             actionLabel="Add Contact"
             onAction={() => setIsAddModalOpen(true)}
           />
-) : (
-            <>
-<ContactsTable
-                contacts={filteredContacts}
-                companies={companies}
-                onEdit={(contact) => {
-                  setSelectedContact(contact);
-                  setIsEditModalOpen(true);
-                }}
-                onDelete={(contact) => {
-                  setSelectedContact(contact);
-                  setIsDeleteDialogOpen(true);
-                }}
-                onViewDetails={openDetailModal}
-              />
-            </>
-          )}
+        ) : (
+          <ContactsTable
+            contacts={filteredContacts}
+            companies={companies}
+            onEdit={(contact) => {
+              setSelectedContact(contact);
+              setIsEditModalOpen(true);
+            }}
+            onDelete={(contact) => {
+              setSelectedContact(contact);
+              setIsDeleteDialogOpen(true);
+            }}
+            onViewDetails={openDetailModal}
+          />
+        )}
       </div>
 
       <Modal
@@ -222,10 +222,9 @@ const openDetailModal = (contact) => {
         title="Delete Contact"
         message={`Are you sure you want to delete ${selectedContact?.Name}? This action cannot be undone.`}
         confirmLabel="Delete"
-        variant="danger"
-/>
+      />
 
-<ContactDetailModal
+      <ContactDetailModal
         isOpen={isDetailModalOpen}
         onClose={() => setIsDetailModalOpen(false)}
         contact={detailContact}

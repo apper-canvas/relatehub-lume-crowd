@@ -1,7 +1,7 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import React, { useEffect } from "react";
 import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
-import { useEffect } from "react";
 
 const ContactDetailModal = ({ isOpen, onClose, contact, companies, onEdit, onDelete }) => {
   useEffect(() => {
@@ -15,15 +15,18 @@ const ContactDetailModal = ({ isOpen, onClose, contact, companies, onEdit, onDel
       document.body.style.overflow = "unset";
     };
   }, [isOpen]);
-
 if (!contact) return null;
 
-const company = companies?.find(c => c.Id === contact?.companyId);
+  // Find the company name
+  const company = companies?.find(c => c.Id === contact?.companyId);
+  const companyName = company?.name || 'No Company';
+
   const handleEdit = () => {
     onEdit(contact);
     onClose();
   };
-const handleDelete = () => {
+
+  const handleDelete = () => {
     onDelete(contact);
     onClose();
   };
