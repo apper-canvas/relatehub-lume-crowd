@@ -23,7 +23,7 @@ const Contacts = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-  const [selectedContact, setSelectedContact] = useState(null);
+const [selectedContact, setSelectedContact] = useState(null);
 const [detailContact, setDetailContact] = useState(null);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
 

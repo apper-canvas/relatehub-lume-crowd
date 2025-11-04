@@ -71,7 +71,7 @@ const handleDelete = () => {
 <p className="text-base text-gray-900 font-medium">{contact.name}</p>
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-gray-500 mb-1">Company</p>
+<p className="text-sm font-medium text-gray-500 mb-1">Company</p>
 <p className="text-base text-gray-900">{company?.name || 'N/A'}</p>
                     </div>
 <div>
