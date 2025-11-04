@@ -24,7 +24,7 @@ const Contacts = () => {
 const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
 const [selectedContact, setSelectedContact] = useState(null);
-const [detailContact, setDetailContact] = useState(null);
+  const [detailContact, setDetailContact] = useState(null);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   // Fetch contacts on mount
   useEffect(() => {
@@ -119,13 +119,13 @@ const openDetailModal = (contact) => {
     setIsDetailModalOpen(true);
   };
 
-const openEditModal = (contact) => {
+  const openEditModal = (contact) => {
     setIsDetailModalOpen(false);
     setSelectedContact(contact);
     setIsEditModalOpen(true);
   };
 
-const openDeleteDialog = (contact) => {
+  const openDeleteDialog = (contact) => {
     setIsDetailModalOpen(false);
     setSelectedContact(contact);
     setIsDeleteDialogOpen(true);
@@ -175,7 +175,7 @@ const openDeleteDialog = (contact) => {
                   setSelectedContact(contact);
                   setIsDeleteDialogOpen(true);
                 }}
-onViewDetails={openDetailModal}
+                onViewDetails={openDetailModal}
               />
             </>
           )}

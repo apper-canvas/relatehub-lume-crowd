@@ -104,8 +104,7 @@ const sortedContacts = [...contacts].sort((a, b) => {
             <tr
               key={contact.Id}
 onClick={() => onViewDetails(contact)}
-                className="cursor-pointer hover:bg-gray-50 transition-colors"
-              className="group hover:bg-gray-50 cursor-pointer transition-colors"
+                className="group hover:bg-gray-50 cursor-pointer transition-colors"
             >
               <td className="px-6 py-4 whitespace-nowrap">
                 <div className="flex items-center">
