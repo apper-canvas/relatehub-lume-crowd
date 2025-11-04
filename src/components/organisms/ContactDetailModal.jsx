@@ -15,11 +15,11 @@ const ContactDetailModal = ({ isOpen, onClose, contact, companies, onEdit, onDel
       document.body.style.overflow = "unset";
     };
   }, [isOpen]);
-if (!contact) return null;
 
-  // Find the company name
+  if (!contact) return null;
+
   const company = companies?.find(c => c.Id === contact?.companyId);
-  const companyName = company?.name || 'No Company';
+  const companyName = company?.name || (contact?.companyId ? 'Unknown Company' : 'No Company');
 
   const handleEdit = () => {
     onEdit(contact);
